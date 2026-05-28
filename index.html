@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mahibi Eid Salami</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#041c32,#064420,#0b8457);
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* Moon */
+
+    .moon{
+      position:absolute;
+      top:60px;
+      right:90px;
+      width:120px;
+      height:120px;
+      background:white;
+      border-radius:50%;
+      box-shadow:0 0 40px white;
+    }
+
+    .moon::after{
+      content:'';
+      position:absolute;
+      width:100px;
+      height:100px;
+      background:#064420;
+      border-radius:50%;
+      top:-5px;
+      left:28px;
+    }
+
+    /* Stars */
+
+    .star{
+      position:absolute;
+      width:4px;
+      height:4px;
+      background:white;
+      border-radius:50%;
+      animation:blink 2s infinite alternate;
+    }
+
+    @keyframes blink{
+      from{
+        opacity:.3;
+      }
+      to{
+        opacity:1;
+      }
+    }
+
+    /* Card */
+
+    .container{
+      width:90%;
+      max-width:500px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.2);
+      backdrop-filter:blur(12px);
+      border-radius:25px;
+      padding:40px;
+      text-align:center;
+      color:white;
+      z-index:10;
+      box-shadow:0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .eid{
+      font-size:50px;
+      font-weight:700;
+      color:#ffd700;
+      margin-bottom:10px;
+      text-shadow:0 0 15px #ffd700;
+    }
+
+    h2{
+      font-size:28px;
+      margin-bottom:15px;
+    }
+
+    p{
+      color:#e5e7eb;
+      line-height:1.7;
+      margin-bottom:25px;
+    }
+
+    .gift{
+      font-size:75px;
+      animation:bounce 1.5s infinite;
+      margin-bottom:20px;
+    }
+
+    @keyframes bounce{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-12px);
+      }
+    }
+
+    button{
+      padding:14px 35px;
+      border:none;
+      border-radius:50px;
+      font-size:18px;
+      font-weight:600;
+      cursor:pointer;
+      background:linear-gradient(45deg,#ffd700,#ffb703);
+      color:#111827;
+      transition:.3s;
+    }
+
+    button:hover{
+      transform:scale(1.08);
+      box-shadow:0 0 20px #ffd700;
+    }
+
+    .salami-box{
+      margin-top:25px;
+      font-size:30px;
+      font-weight:700;
+      color:#fff3b0;
+      display:none;
+      animation:fade .6s ease;
+    }
+
+    @keyframes fade{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .footer{
+      margin-top:25px;
+      font-size:14px;
+      color:#d1d5db;
+    }
+
+    @media(max-width:600px){
+
+      .eid{
+        font-size:38px;
+      }
+
+      h2{
+        font-size:22px;
+      }
+
+      .gift{
+        font-size:60px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Moon -->
+  <div class="moon"></div>
+
+  <!-- Stars -->
+  <div class="star" style="top:10%;left:20%;"></div>
+  <div class="star" style="top:15%;left:70%;"></div>
+  <div class="star" style="top:30%;left:85%;"></div>
+  <div class="star" style="top:70%;left:10%;"></div>
+  <div class="star" style="top:80%;left:75%;"></div>
+  <div class="star" style="top:50%;left:50%;"></div>
+
+  <!-- Main Box -->
+
+  <div class="container">
+
+    <div class="eid">EID MUBARAK</div>
+
+    <div class="gift">🎁</div>
+
+    <h2>Mahibi's Eid Salami</h2>
+
+    <p>
+      Assalamu Alaikum 🌙 <br><br>
+
+      Mahibi Tomar Jonno Special Eid Salami Pathaise 💖 <br>
+
+      Nicher button e click kore tomar salami collect koro ✨
+    </p>
+
+    <button onclick="showSalami()">
+      Collect Salami
+    </button>
+
+    <div class="salami-box" id="salamiBox"></div>
+
+    <div class="footer">
+      Made With ❤️ For Eid
+    </div>
+
+  </div>
+
+  <script>
+
+    function showSalami(){
+
+      const amounts = [
+        "৳100",
+        "৳200",
+        "৳500",
+        "৳1000",
+        "৳2000"
+      ];
+
+      const random =
+      amounts[Math.floor(Math.random()*amounts.length)];
+
+      const box =
+      document.getElementById("salamiBox");
+
+      box.style.display = "block";
+
+      box.innerHTML =
+      "🎉 Mahibi Tomake " + random + " Eid Salami Disse! 💖";
+    }
+
+  </script>
+
+</body>
+</html>
